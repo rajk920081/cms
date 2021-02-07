@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+
+
+<div class="container">
+    <div class="col-md-6">
+
+<h1 class="my-4">
+    <a href="/" class="btn btn-warning" >Home</a></h1>
+
+<form action="" method="post">
+     {% csrf_token %}
+    <div class="form-group">
+        <input type="text" name="name" placeholder="customer name" value="{{cus.name}}" class="form-control">
+    </div>
+    <div class="form-group"> <input type="text" name="address" placeholder="customer address" value="{{cus.address}}" class="form-control"></div>
+    <div class="form-group"><input type="text" name="mobile" placeholder="customer mobile" value="{{cus.mobile}}" class="form-control"></div>
+    <div>
+        {{cus.gender}}
+
+
+        <input type="radio" name="gender" value="male" {% if cus.gender == 'male' %}
+                checked
+
+        {% endif%}  > Male
+
+        <input type="radio" name="gender" value="female" {% if cus.gender == 'female' %}
+                checked
+
+        {% endif%} > Female
+    </div>
+
+
+    <br><button type="submit" class="btn btn-success col-md-2" >add</button>
+{{data}}
+</form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Title</title>
+</head>
+<body>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<div class="container">
+    <h1 class="text-danger">All Employees:</h1>
+    <div class="my-4">
+        <a href="/adde/" class="btn btn-primary">add employee</a>
+    </div>
+
+
+<table border="1" class="table table-bordered">
+    <tr class="bg-primary text-white">
+        <th>name</th>
+        <th>#</th>
+        <th>address</th>
+        <th>mobile</th>
+        <th>gender</th>
+        <th>#</th>
+        <th>#</th>
+    </tr>
+
+{% for i in show%}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.address}}</td>
+        <td>{{i.mobile}}</td>
+        <td>{{i.gender}}</td>
+        <td><a href="{% url 'delete' i.id %}" class="btn btn-danger">Delete</a> </td>
+        <td><a href="{% url 'update' i.id %}" class="btn btn-info">Update </a> </td>
+    </tr>
+    {% endfor %}
+
+</table>
+    </div>
+</body>
+</html>
